@@ -12,6 +12,7 @@ class Disciplina extends Model
         'numCreditos',
         'FK_idTurma',
         'FK_idProfessor',
+        'local_id',
     
     ];
     

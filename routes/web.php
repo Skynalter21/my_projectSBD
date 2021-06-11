@@ -82,21 +82,6 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
 Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
     Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
         Route::prefix('turmas')->name('turmas/')->group(static function() {
-            Route::get('/',                                             'TurmaController@index')->name('index');
-            Route::get('/create',                                       'TurmaController@create')->name('create');
-            Route::post('/',                                            'TurmaController@store')->name('store');
-            Route::get('/{turma}/edit',                                 'TurmaController@edit')->name('edit');
-            Route::post('/bulk-destroy',                                'TurmaController@bulkDestroy')->name('bulk-destroy');
-            Route::post('/{turma}',                                     'TurmaController@update')->name('update');
-            Route::delete('/{turma}',                                   'TurmaController@destroy')->name('destroy');
-        });
-    });
-});
-
-/* Auto-generated admin routes */
-Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->group(static function () {
-    Route::prefix('admin')->namespace('App\Http\Controllers\Admin')->name('admin/')->group(static function() {
-        Route::prefix('turmas')->name('turmas/')->group(static function() {
             Route::get('/',                                             'TurmasController@index')->name('index');
             Route::get('/create',                                       'TurmasController@create')->name('create');
             Route::post('/',                                            'TurmasController@store')->name('store');
@@ -104,6 +89,7 @@ Route::middleware(['auth:' . config('admin-auth.defaults.guard'), 'admin'])->gro
             Route::post('/bulk-destroy',                                'TurmasController@bulkDestroy')->name('bulk-destroy');
             Route::post('/{turma}',                                     'TurmasController@update')->name('update');
             Route::delete('/{turma}',                                   'TurmasController@destroy')->name('destroy');
+            Route::post('/{turma}/info',                                'TurmaController@getTurmaInfo')->name('get-info');
         });
     });
 });

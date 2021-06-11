@@ -50,6 +50,7 @@
                                         </th>
 
                                         <th is='sortable' :column="'id'">{{ trans('admin.turma.columns.id') }}</th>
+                                        <th is='sortable' :column="'semestre'">{{ trans('admin.turma.columns.nome') }}</th>
                                         <th is='sortable' :column="'semestre'">{{ trans('admin.turma.columns.semestre') }}</th>
                                         <th is='sortable' :column="'FK_local'">{{ trans('admin.turma.columns.FK_local') }}</th>
                                         <th is='sortable' :column="'faculdade_id'">{{ trans('admin.turma.columns.faculdade_id') }}</th>
@@ -70,14 +71,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr v-for="(item, index) in collection" :key="item.id" :class="bulkItems[item.id] ? 'bg-bulk' : ''">
+                                    <tr v-for="(item, index) in collection" :key="item.id" :class="bulkItems[item.id] ? 'bg-bulk' : ''" @click="openTurmaInfo(item)">
                                         <td class="bulk-checkbox">
                                             <input class="form-check-input" :id="'enabled' + item.id" type="checkbox" v-model="bulkItems[item.id]" v-validate="''" :data-vv-name="'enabled' + item.id"  :name="'enabled' + item.id + '_fake_element'" @click="onBulkItemClicked(item.id)" :disabled="bulkCheckingAllLoader">
                                             <label class="form-check-label" :for="'enabled' + item.id">
                                             </label>
                                         </td>
 
-                                    <td>@{{ item.id }}</td>
+                                        <td>@{{ item.id }}</td>
+                                        <td>@{{ item.nome }}</td>
                                         <td>@{{ item.semestre }}</td>
                                         <td>@{{ item.FK_local }}</td>
                                         <td>@{{ item.faculdade_id }}</td>

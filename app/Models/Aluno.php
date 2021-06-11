@@ -12,7 +12,6 @@ class Aluno extends Model
         'nome',
         'nascimento',
         'telefone',
-        'faltas',
         'cra',
         'FK_idTurma',
         'FK_idOrientador',

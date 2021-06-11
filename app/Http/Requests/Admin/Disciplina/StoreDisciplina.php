@@ -29,8 +29,9 @@ class StoreDisciplina extends FormRequest
             'nome' => ['required', 'string'],
             'sigla' => ['required', 'string'],
             'numCreditos' => ['required', 'integer'],
-            'FK_idTurma' => ['required', 'integer'],
-            'FK_idProfessor' => ['required', 'integer'],
+            'turma' => ['required', 'array'],
+            'professor' => ['required', 'array'],
+            'local' => ['nullable'],
             
         ];
     }

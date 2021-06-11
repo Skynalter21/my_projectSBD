@@ -10,6 +10,7 @@
         
         <turma-form
             :action="'{{ url('admin/turmas') }}'"
+            :faculdades="{{ $faculdades->toJson() }}"
             v-cloak
             inline-template>
 

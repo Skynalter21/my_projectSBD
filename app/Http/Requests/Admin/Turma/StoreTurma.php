@@ -27,8 +27,8 @@ class StoreTurma extends FormRequest
     {
         return [
             'semestre' => ['required', 'integer'],
-            'FK_local' => ['required', 'integer'],
-            'faculdade_id' => ['required', 'integer'],
+            'nome' => ['required', 'string'],
+            'faculdade' => ['required', 'array'],
             'numProfessores' => ['required', 'integer'],
             
         ];

@@ -10,6 +10,9 @@
             <disciplina-form
                 :action="'{{ $disciplina->resource_url }}'"
                 :data="{{ $disciplina->toJson() }}"
+                :locais="{{ $locais->toJson() }}"
+                :turmas="{{ $turmas->toJson() }}"
+                :professores="{{ $professores->toJson() }}"
                 v-cloak
                 inline-template>
             

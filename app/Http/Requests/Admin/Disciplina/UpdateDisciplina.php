@@ -29,9 +29,9 @@ class UpdateDisciplina extends FormRequest
             'nome' => ['sometimes', 'string'],
             'sigla' => ['sometimes', 'string'],
             'numCreditos' => ['sometimes', 'integer'],
-            'FK_idTurma' => ['sometimes', 'integer'],
-            'FK_idProfessor' => ['sometimes', 'integer'],
-            
+            'turma' => ['required', 'array'],
+            'professor' => ['required', 'array'],
+            'local' => ['nullable'],
         ];
     }
 

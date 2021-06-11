@@ -37,7 +37,7 @@ class AlunoController extends Controller
             $request,
 
             // set columns to query
-            ['id', 'nome', 'nascimento', 'telefone', 'faltas', 'cra', 'FK_idTurma', 'FK_idOrientador'],
+            ['id', 'nome', 'nascimento', 'telefone', 'cra', 'FK_idTurma', 'FK_idOrientador'],
 
             // set columns to searchIn
             ['id', 'nome', 'telefone']

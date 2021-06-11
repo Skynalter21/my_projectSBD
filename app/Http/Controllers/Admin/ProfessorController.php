@@ -8,6 +8,7 @@ use App\Http\Requests\Admin\Professor\DestroyProfessor;
 use App\Http\Requests\Admin\Professor\IndexProfessor;
 use App\Http\Requests\Admin\Professor\StoreProfessor;
 use App\Http\Requests\Admin\Professor\UpdateProfessor;
+use App\Http\Services\DisciplinaServiceInterface;
 use App\Models\Professor;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
@@ -22,6 +23,12 @@ use Illuminate\View\View;
 
 class ProfessorController extends Controller
 {
+    private $disciplinaService;
+    
+    public function __construct(DisciplinaServiceInterface $disciplinaService)
+    {
+        $this->disciplinaService = $disciplinaService;
+    }
 
     /**
      * Display a listing of the resource.
@@ -184,5 +191,15 @@ class ProfessorController extends Controller
         });
 
         return response(['message' => trans('brackets/admin-ui::admin.operation.succeeded')]);
+    }
+
+    public function listarDisciplinasByProfessor(Professor $professor)
+    {
+        $disciplinas = $this->disciplinaService->listarDisciplinasByProfessorId($professor->id);
+
+        return response()->json([
+            'message' => trans('brackets/admin-ui::admin.operation.succeeded'),
+            'disciplinas' => $disciplinas,
+        ]);
     }
 }

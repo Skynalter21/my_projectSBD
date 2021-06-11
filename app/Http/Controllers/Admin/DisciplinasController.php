@@ -9,6 +9,9 @@ use App\Http\Requests\Admin\Disciplina\IndexDisciplina;
 use App\Http\Requests\Admin\Disciplina\StoreDisciplina;
 use App\Http\Requests\Admin\Disciplina\UpdateDisciplina;
 use App\Models\Disciplina;
+use App\Models\LstSalas;
+use App\Models\Professor;
+use App\Models\Turma;
 use Brackets\AdminListing\Facades\AdminListing;
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -65,7 +68,11 @@ class DisciplinasController extends Controller
     {
         $this->authorize('admin.disciplina.create');
 
-        return view('admin.disciplina.create');
+        return view('admin.disciplina.create', [
+            'locais' => LstSalas::all(),
+            'turmas' => Turma::all(),
+            'professores' => Professor::all(),
+        ]);
     }
 
     /**
@@ -78,6 +85,10 @@ class DisciplinasController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+
+        $sanitized['local_id'] = $sanitized['local']['id'];
+        $sanitized['FK_idTurma'] = $sanitized['turma']['id'];
+        $sanitized['FK_idProfessor'] = $sanitized['professor']['id'];
 
         // Store the Disciplina
         $disciplina = Disciplina::create($sanitized);
@@ -117,6 +128,9 @@ class DisciplinasController extends Controller
 
         return view('admin.disciplina.edit', [
             'disciplina' => $disciplina,
+            'locais' => LstSalas::all(),
+            'turmas' => Turma::all(),
+            'professores' => Professor::all(),
         ]);
     }
 
@@ -131,6 +145,10 @@ class DisciplinasController extends Controller
     {
         // Sanitize input
         $sanitized = $request->getSanitized();
+
+        $sanitized['local_id'] = $sanitized['local']['id'];
+        $sanitized['FK_idTurma'] = $sanitized['turma']['id'];
+        $sanitized['FK_idProfessor'] = $sanitized['professor']['id'];
 
         // Update changed values Disciplina
         $disciplina->update($sanitized);

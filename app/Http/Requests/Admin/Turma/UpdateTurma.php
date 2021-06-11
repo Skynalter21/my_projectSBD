@@ -27,8 +27,8 @@ class UpdateTurma extends FormRequest
     {
         return [
             'semestre' => ['sometimes', 'integer'],
-            'FK_local' => ['sometimes', 'integer'],
-            'faculdade_id' => ['sometimes', 'integer'],
+            'nome' => ['sometimes', 'string'],
+            'faculdade' => ['sometimes', 'array'],
             'numProfessores' => ['sometimes', 'integer'],
             
         ];

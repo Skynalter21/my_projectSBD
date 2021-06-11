@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Turma extends Model
 {
     protected $fillable = [
+        'nome',
         'semestre',
-        'FK_local',
         'faculdade_id',
         'numProfessores',
     
